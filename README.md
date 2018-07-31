@@ -1,7 +1,7 @@
 ausbits-client-php
 ==============
 
-A simple PHP client for Crypto Trade Site Ausbits.com
+A simple PHP client for Crypto Trade Site Ausbits.com.au
 
 Quick example
 =============
