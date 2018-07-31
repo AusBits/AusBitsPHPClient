@@ -1,7 +1,7 @@
-yunbi-client-php
+ausbits-client-php
 ==============
 
-A simple PHP client for Crypto Trade Site Yunbi.com
+A simple PHP client for Crypto Trade Site Ausbits.com
 
 Quick example
 =============
@@ -9,10 +9,10 @@ Quick example
 ```php
 
 <?php
-require_once('lib/yunbi-client.php');
+require_once('lib/ausbits-client.php');
 
 try {
-  $client = new YunbiClient(array(
+  $client = new AusbitsClient(array(
                   'access_key' => 'Your access key',
                   'secret_key' => 'Your secret key'
             ));
@@ -29,4 +29,4 @@ catch (Exception $e) {
 API Document
 =============
 
-[API_v2](https://demo.peatio.com/documents/api_v2)
+[API_v2](https://ausbits.com.au/documents/api_v2)

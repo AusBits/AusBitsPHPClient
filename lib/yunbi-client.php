@@ -2,25 +2,25 @@
 
 /**
  *
- * A Simple PHP Yunbi API Client
+ * A Simple PHP Ausbits API Client
  *
  * @author Panlilu <panlilu@gmail.com>
  * @version 0.0.1
  */
 
-class YunbiClientException extends Exception {}
+class AusbitsClientException extends Exception {}
 
-class YunbiClient
+class AusbitsClient
 {
   public $options=[];
 
   public function __construct($options=array()) {
     $default_options = array(
-      'api_host'    => "https://yunbi.com/",
+      'api_host'    => "https://ausbits.com.au/",
       'access_key'  => "Your Access Key",
       'secret_key'  => "Your Secret Key",
       'timeout_sec' => 30,
-      'user_agent'  => "Yunbi API Client/0.0.1",
+      'user_agent'  => "Ausbits API Client/0.0.1",
     );
     $this->options = array_merge($default_options, $options);
   }
@@ -30,11 +30,11 @@ class YunbiClient
   }
 
   public function get($path, $params=null) {
-    return $this->yunbi_api_req($path, $params);
+    return $this->ausbits_api_req($path, $params);
   }
 
   public function post($path, $params=null) {
-    return $this->yunbi_api_req($path, $params, 'POST');
+    return $this->ausbits_api_req($path, $params, 'POST');
   }
 
   // get tonce
@@ -43,7 +43,7 @@ class YunbiClient
     return $mt[1].substr($mt[0], 2, 6);
   }
 
-  private function yunbi_api_req($path, $params=null, $canonical_verb='GET') {
+  private function ausbits_api_req($path, $params=null, $canonical_verb='GET') {
 
     $api_host    = $this->options['api_host'];
     $access_key  = $this->options['access_key'];
@@ -92,11 +92,11 @@ class YunbiClient
       $content = $this->curl_get_contents($url, null, $timeout_sec, $user_agent);
     }
     if (empty($content)) {
-      throw new YunbiClientException("Content is empty.");
+      throw new AusbitsClientException("Content is empty.");
     }
     $obj = json_decode($content, 1);
     if (empty($obj)) {
-      throw new YunbiClientException("JSON decode failed, content: " .$content);
+      throw new AusbitsClientException("JSON decode failed, content: " .$content);
     }
     return $obj;
 
@@ -127,7 +127,7 @@ class YunbiClient
     $curl_error = curl_error($ch);
     curl_close($ch);
     if ($curl_errno > 0) {
-      throw new YunbiClientException("cURL Error ($curl_errno): $curl_error, url: {$url}");
+      throw new AusbitsClientException("cURL Error ($curl_errno): $curl_error, url: {$url}");
     }
     return $r;
   }

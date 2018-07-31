@@ -1,8 +1,8 @@
 <?php
-require_once('lib/yunbi-client.php');
+require_once('lib/ausbits-client.php');
 
 try {
-  $client = new YunbiClient(array(
+  $client = new AusbitsClient(array(
                   'access_key' => 'Your access key',
                   'secret_key' => 'Your secret key'
             ));
